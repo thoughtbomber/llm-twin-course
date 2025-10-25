@@ -9,7 +9,8 @@ RUN yum install -y unzip && \
 
 FROM  public.ecr.aws/lambda/python:3.11
 
-ENV POETRY_VERSION=1.8.3
+ENV POETRY_VERSION=1.8.3 \
+    PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple/"
 
 # Install the function's OS dependencies using yum
 RUN yum install -y \

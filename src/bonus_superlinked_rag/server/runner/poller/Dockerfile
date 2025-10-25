@@ -15,7 +15,8 @@ ENV PYTHONUNBUFFERED=1 \
     POETRY_NO_INTERACTION=1 \
     \
     PYSETUP_PATH="/opt/pysetup" \
-    VENV_PATH="/opt/pysetup/.venv"
+    VENV_PATH="/opt/pysetup/.venv" \
+    PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple/"
 
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 

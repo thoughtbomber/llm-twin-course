@@ -1,5 +1,11 @@
 FROM  public.ecr.aws/lambda/python:3.11 as build
 
+RUN mkdir -p /etc/apt && touch /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main" > /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main" >> /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main" >> /etc/apt/sources.list
+
+
 # Install chrome driver and browser
 RUN yum install -y unzip && \
     curl -Lo "/tmp/chromedriver.zip" "https://storage.googleapis.com/chrome-for-testing-public/126.0.6478.126/linux64/chromedriver-linux64.zip" && \
@@ -43,6 +49,7 @@ RUN yum install -y \
     libcurl4-openssl-dev \
     libpq-dev
 
+# RUN unset all_proxy
 
 COPY --from=build /opt/chrome-linux64 /opt/chrome
 COPY --from=build /opt/chromedriver-linux64 /opt/

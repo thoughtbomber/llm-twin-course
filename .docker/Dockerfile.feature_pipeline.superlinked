@@ -11,6 +11,11 @@ ENV WORKSPACE_ROOT=/usr/src/app \
 
 RUN mkdir -p $WORKSPACE_ROOT
 
+RUN mkdir -p /etc/apt && touch /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main" > /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main" >> /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main" >> /etc/apt/sources.list
+
 # Install system dependencies
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends build-essential \
@@ -19,6 +24,8 @@ RUN apt-get update -y \
     curl \
     build-essential \
     && apt-get clean
+
+# RUN unset all_proxy
 
 # Install Poetry using pip and clear cache
 RUN pip install --no-cache-dir "poetry==$POETRY_VERSION"

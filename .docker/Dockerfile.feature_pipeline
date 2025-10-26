@@ -9,7 +9,14 @@ ENV WORKSPACE_ROOT=/usr/src/app \
     POETRY_VERSION=1.8.3 \
     PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple/"
 
+RUN mkdir -p /etc/apt && touch /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main" > /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main" >> /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main" >> /etc/apt/sources.list
+
+
 RUN mkdir -p $WORKSPACE_ROOT
+# RUN unset all_proxy
 
 # Install system dependencies
 RUN apt-get update -y \

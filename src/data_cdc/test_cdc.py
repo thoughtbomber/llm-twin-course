@@ -22,6 +22,15 @@ def insert_data_to_mongodb(uri, database_name, collection_name, data):
     finally:
         client.close()
 
+def test_basic():
+
+    insert_data_to_mongodb(
+        "mongodb://localhost:30001,localhost:30002,localhost:30003/?replicaSet=my-replica-set",
+        "twin",
+        "posts",
+        {"platform": "linkedin", "content": "Test content"}
+    )
+
 
 if __name__ == "__main__":
     insert_data_to_mongodb(

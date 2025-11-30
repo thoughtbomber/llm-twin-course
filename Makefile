@@ -16,7 +16,7 @@ help:
 # ======================================
 
 local-start: # Build and start your local Docker infrastructure.
-	docker compose -f docker-compose.yml up --build -d
+	docker compose -f docker-compose.yml up -d
 
 local-stop: # Stop your local Docker infrastructure.
 	docker compose -f docker-compose.yml down --remove-orphans

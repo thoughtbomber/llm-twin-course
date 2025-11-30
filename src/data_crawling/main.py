@@ -34,6 +34,6 @@ def handler(event, context: LambdaContext | None = None) -> dict[str, Any]:
 if __name__ == "__main__":
     event = {
         "user": "Paul Iuztin",
-        "link": "https://www.linkedin.com/in/vesaalexandru/",
+        "link": "https://medium.com/decodingml/an-end-to-end-framework-for-production-ready-llm-systems-by-building-your-llm-twin-2cc6bb01141f",
     }
     handler(event, None)

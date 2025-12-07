@@ -36,7 +36,7 @@ class PostCleaningHandler(CleaningDataHandler):
 class ArticleCleaningHandler(CleaningDataHandler):
     def clean(self, data_model: ArticleRawModel) -> ArticleCleanedModel:
         joined_text = (
-            "".join(data_model.content.values()) if data_model and data_model.content else None
+            "".join(v or "" for v in data_model.content.values()) if data_model and data_model.content else None# todo: 这行代码报错，需要debug，学习如何debug
         )
 
         return ArticleCleanedModel(

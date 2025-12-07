@@ -15,8 +15,8 @@ help:
 # ------- Docker Infrastructure --------
 # ======================================
 
-local-start: # Build and start your local Docker infrastructure.
-	docker compose -f docker-compose.yml up -d
+local-start: # Build and start your local Docker infrastructure. --build if rebuild
+	docker compose -f docker-compose.yml up --build -d
 
 local-stop: # Stop your local Docker infrastructure.
 	docker compose -f docker-compose.yml down --remove-orphans
@@ -27,7 +27,7 @@ local-stop: # Stop your local Docker infrastructure.
 
 local-test-medium: # Make a call to your local AWS Lambda (hosted in Docker) to crawl a Medium article.
 	curl -X POST "http://localhost:9010/2015-03-31/functions/function/invocations" \
-	  	-d '{"user": "Paul Iusztin", "link": "https://medium.com/decodingml/an-end-to-end-framework-for-production-ready-llm-systems-by-building-your-llm-twin-2cc6bb01141f"}'
+            -d '{"user": "Chris Kuo", "link": "https://medium.com/causal-inference-methods-models-and-applications/double-machine-learning-deconfounding-high-dimensional-causal-inference-97a76da70986"}'
 
 local-test-github: # Make a call to your local AWS Lambda (hosted in Docker) to crawl a Github repository.
 	curl -X POST "http://localhost:9010/2015-03-31/functions/function/invocations" \

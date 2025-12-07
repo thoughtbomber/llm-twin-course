@@ -14,9 +14,9 @@ connection = QdrantDatabaseConnector()
 
 flow = Dataflow("Streaming ingestion pipeline")
 stream = op.input("input", flow, RabbitMQSource())
-stream = op.map("raw dispatch", stream, RawDispatcher.handle_mq_message)
+stream = op.map("raw dispatch", stream, RawDispatcher.handle_mq_message) # map json to a pydantic model
 stream = op.map("clean dispatch", stream, CleaningDispatcher.dispatch_cleaner)
-op.output(
+op.output( # load cleaned data to qdrant
     "cleaned data insert to qdrant",
     stream,
     QdrantOutput(connection=connection, sink_type="clean"),

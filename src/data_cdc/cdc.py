@@ -18,7 +18,7 @@ def stream_process():
 
         # Watch changes in a specific collection
         changes = db.watch([{"$match": {"operationType": {"$in": ["insert"]}}}])
-        for change in changes:
+        for change in changes: # stream_process() never finishes. It runs forever, blocked on the for change in changes: loop, waiting for the next change.
             data_type = change["ns"]["coll"]
             entry_id = str(change["fullDocument"]["_id"])  # Convert ObjectId to string
 

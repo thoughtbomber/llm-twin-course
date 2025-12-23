@@ -9,7 +9,7 @@ else
         echo 'BYTEWAX_PYTHON_FILE_PATH is not set. Exiting...'
         exit 1
     fi
-    python -m bytewax.run $BYTEWAX_PYTHON_FILE_PATH
+    python -m bytewax.run $BYTEWAX_PYTHON_FILE_PATH # main:flow defined in docker-compose.yml
 fi
 
 

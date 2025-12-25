@@ -12,7 +12,9 @@ class Reranker:
         reranking_template = RerankingTemplate()
         prompt = reranking_template.create_template(keep_top_k=keep_top_k)
         model = ChatOpenAI(
-            model=settings.OPENAI_MODEL_ID, api_key=settings.OPENAI_API_KEY
+            model=settings.OPENAI_MODEL_ID,
+            api_key=settings.OPENAI_API_KEY,
+            base_url="https://api.moonshot.cn/v1",
         )
         chain = prompt | model
 

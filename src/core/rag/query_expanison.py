@@ -17,6 +17,7 @@ class QueryExpansion:
         model = ChatOpenAI(
             model=settings.OPENAI_MODEL_ID,
             api_key=settings.OPENAI_API_KEY,
+            base_url="https://api.moonshot.cn/v1",
             temperature=0,
         )
         chain = prompt | model

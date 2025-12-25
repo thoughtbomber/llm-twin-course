@@ -2,11 +2,12 @@ from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-ROOT_DIR = str(Path(__file__).parent.parent.parent)
+ROOT_DIR = Path(__file__).parent.parent.parent
+ENV_FILE = str(ROOT_DIR / ".env")
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=ROOT_DIR, env_file_encoding="utf-8")
+    model_config = SettingsConfigDict(env_file=ENV_FILE, env_file_encoding="utf-8")
 
     # Embeddings config
     EMBEDDING_MODEL_ID: str = "BAAI/bge-small-en-v1.5"

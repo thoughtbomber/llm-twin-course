@@ -19,7 +19,10 @@ class GptCommunicator:
 
     def send_prompt(self, prompt: str) -> list:
         try:
-            client = OpenAI(api_key=self.api_key)
+            client = OpenAI(
+                api_key=self.api_key,
+                base_url="https://api.moonshot.cn/v1"
+            )
             logger.info(f"Sending batch to GPT = '{settings.OPENAI_MODEL_ID}'.")
 
             chat_completion = client.chat.completions.create(

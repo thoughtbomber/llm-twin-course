@@ -208,7 +208,7 @@ class DatasetGenerator:
 
         return all_cleaned_contents
 
-
+# todo: remember to run generate.py as a module and set the working directory as src/feature_pipeline
 if __name__ == "__main__":
     file_handler = FileHandler()
     api_communicator = GptCommunicator()

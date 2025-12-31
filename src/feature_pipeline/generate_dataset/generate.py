@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+import os
 
 # To mimic using multiple Python modules, such as 'core' and 'feature_pipeline',
 # we will add the './src' directory to the PYTHONPATH. This is not intended for
@@ -19,6 +20,7 @@ logger.warning(
     Remove the 'settings.patch_localhost()' call from above when deploying or running inside Docker."
 )
 
+os.environ["COMET_API_KEY"] = settings.COMET_API_KEY
 
 import json
 import logging
